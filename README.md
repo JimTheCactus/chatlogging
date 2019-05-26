@@ -4,7 +4,8 @@
 
 To use this you'll need to do the following steps:
 
-* Copy the `chatlog` folder from `game/scripts` to your `game` folder.
+* Copy `chat.rpy` and `chat_screens.rpy` to your `game` folder.
+  * Optionally, you can import this library as a Git submodule in your `game` folder to make updating easy. See [git-submodule](https://git-scm.com/docs/git-submodule) and the [Git Book discussion on submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more information.
 * Create a `ChatLog` object to hold the chat log and state. Use
 `default <var> = ChatLog()` to have the log survive saves and rollback.
 * Create a wrapper screen and add `use chat_log(<your ChatLog object>)` to it.
@@ -16,7 +17,39 @@ If you've done all of that correctly, your screen should display, the chat log
 will automatically include any new items. Additionally, any time you add a new
 item, it should automatically scroll the log to the end.
 
-Below is the barest minimum example:
+## Chat Entries
+You'll want to look though `chat_screens.rpy` to see how to make your own
+screens and to see what parameters are available for the default provided
+screens. That said, the options for the default screens are shown below
+
+### chat_entry
+* msg
+  * The message to be displayed.
+* nick
+  * The nickname to be shown with the message. Leave blank for none.
+* avatar
+  * A name for a displayable image that will be used as the chat user's
+  icon. This will be something like "alex chat happy", just like
+  you'd use in a show statement.
+
+### chat_picture
+* pic
+  * AA name for a displayable image that will be included as an image.
+  This will be something like "alex chat happy", just like you'd use in a
+  show statement.
+* nick
+  * The nickname to be shown with the message. Leave blank for none.
+* avatar
+  * A name for a displayable image that will be used as the chat user's
+  icon. This will be something like "alex chat happy", just like
+  you'd use in a show statement.
+
+## Example
+A complete example is provided at [https://github.com/JimTheCactus/chatlogging-example](https://github.com/JimTheCactus/chatlogging-example).
+However, a bare minimum example is below. It will make a full screen chat log and add
+a single chat item to it using the default `chat_entry` entry type which takes
+`msg`, `nick`, and `avatar` inputs.
+
 ```renpy
 # Make a full screen frame
 screen logframe(log):
@@ -27,7 +60,7 @@ screen logframe(log):
 default mylog = ChatLog()
 
 label start:
-    show bg room
+    scene
     # Show the chat log screen and frame
     show screen logframe(mylog)
 
@@ -37,10 +70,18 @@ label start:
         avatar="chat.png")
 ```
 
-A more complete example is provided in `game/scripts/example.rpy`.
-
 ## Licenses
-Copyright 2019 John-Michael O'Brien
+Copyright 2019 PoorLifeChoices <John-Michael O'Brien>
+
+No reason to make this needlessly hard. To use this in your own work, do the following:
+
+* Put something to the effect of `Chat log script by PoorLifeChoices` (lol :3) or `Chat log script by John-Michael O'Brien` in your credits.
+* Use the thing.
+* Love the thing.
+* Make a million dollars from your thing with my thing.
+* It ain't my fault if the thing breaks something important.
+
+However, I formally have to be more specific, so legalese ho!
 
 ### Source Code - MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -59,8 +100,3 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-### Media - Creative Commons Attribution 4.0 International License
-Graphics and audio components of this work with the exception of `no.jpg` are
-licensed under a Creative Commons Attribution 4.0 International License.
-http://creativecommons.org/licenses/by/4.0/
