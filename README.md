@@ -3,9 +3,15 @@
 ***Tools for easily displaying scrolling chat logs in Ren'Py.***
 
 To use this you'll need to do the following steps:
-
+* Get a copy of the code. The latest release can be found at
+https://github.com/JimTheCactus/chatlogging/releases, or you can clone the
+bleeding edge code with `git clone
+https://github.com/JimTheCactus/chatlogging.git`.
 * Copy `chat.rpy` and `chat_screens.rpy` to your `game` folder.
-  * Optionally, you can import this library as a Git submodule in your `game` folder to make updating easy. See [git-submodule](https://git-scm.com/docs/git-submodule) and the [Git Book discussion on submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more information.
+  * Optionally, you can import this library as a Git submodule in your `game`
+  folder to make updating easy. See [git-submodule](https://git-scm.com/docs/git-submodule)
+  and the [Git Book discussion on submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+  for more information.
 * Create a `ChatLog` object to hold the chat log and state. Use
 `default <var> = ChatLog()` to have the log survive saves and rollback.
 * Create a wrapper screen and add `use chat_log(<your ChatLog object>)` to it.
@@ -28,15 +34,14 @@ screens. That said, the options for the default screens are shown below
 * nick
   * The nickname to be shown with the message. Leave blank for none.
 * avatar
-  * A name for a displayable image that will be used as the chat user's
-  icon. This will be something like "alex chat happy", just like
-  you'd use in a show statement.
+  * A name for a displayable that will be used as the chat user's icon. This
+  will be something like "alex chat happy", just like you'd use in a show
+  statement.
 
 ### chat_picture
 * pic
-  * AA name for a displayable image that will be included as an image.
-  This will be something like "alex chat happy", just like you'd use in a
-  show statement.
+  * A name for a displayable that will be included as an image. This will be
+  something like "alex chat happy", just like you'd use in a show statement.
 * nick
   * The nickname to be shown with the message. Leave blank for none.
 * avatar
@@ -46,9 +51,8 @@ screens. That said, the options for the default screens are shown below
 
 ## Example
 A complete example is provided at [https://github.com/JimTheCactus/chatlogging-example](https://github.com/JimTheCactus/chatlogging-example).
-However, a bare minimum example is below. It will make a full screen chat log and add
-a single chat item to it using the default `chat_entry` entry type which takes
-`msg`, `nick`, and `avatar` inputs.
+However, a bare minimum example is shown below. It will make a full screen chat
+log and add a single chat item to it using the default `chat_entry` entry type.
 
 ```renpy
 # Make a full screen frame
@@ -73,9 +77,11 @@ label start:
 ## Licenses
 Copyright 2019 PoorLifeChoices <John-Michael O'Brien>
 
-No reason to make this needlessly hard. To use this in your own work, do the following:
+No reason to make this needlessly hard. To use this in your own work, do the
+following:
 
-* Put something to the effect of `Chat log script by PoorLifeChoices` (lol :3) or `Chat log script by John-Michael O'Brien` in your credits.
+* Put `Chat log script Copyright 2019 PoorLifeChoices <John-Michael O'Brien>`
+(lol :3) in your credits.
 * Use the thing.
 * Love the thing.
 * Make a million dollars from your thing with my thing.
